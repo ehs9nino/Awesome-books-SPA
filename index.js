@@ -74,19 +74,74 @@ class Bookshelf {
 }
 
 const newbook = new Bookshelf(books);
-// On submit
+
 form.onsubmit = () => {
-  // Add the book
+ 
   newbook.addBook(title, author);
-  // Update the html
+  
   newbook.updateBookList();
-  // Reset form
+  
   form.reset();
 };
 
-// Don't forget to call the function when the page loads as well
+
 newbook.updateBookList();
 
 const remove = (id) => {
   newbook.remove(id);
 };
+
+
+const allBooks = document.querySelector('.all-books');
+const addBook = document.querySelector('.add-book');
+const contact = document.querySelector('.contact');
+const navList = document.querySelector('#list');
+const navAdd = document.querySelector('#add');
+const navContact = document.querySelector('#contact');
+
+navList.onclick = () => {
+  navList.style.color = 'darkblue';
+  navAdd.style.removeProperty('color');
+  navContact.style.removeProperty('color');
+  allBooks.classList.remove('hide');
+  addBook.classList.add('hide');
+  contact.classList.add('hide');
+};
+
+navAdd.onclick = () => {
+  navAdd.style.color = 'darkblue';
+  navList.style.removeProperty('color');
+  navContact.style.removeProperty('color');
+  addBook.classList.remove('hide');
+  allBooks.classList.add('hide');
+  contact.classList.add('hide');
+};
+
+navContact.onclick = () => {
+  navContact.style.color = 'darkblue';
+  navList.style.removeProperty('color');
+  navAdd.style.removeProperty('color');
+  contact.classList.remove('hide');
+  addBook.classList.add('hide');
+  allBooks.classList.add('hide');
+};
+
+const siteDate = document.querySelector('#date');
+
+
+function time() {
+  const date = new Date();
+  const locale = navigator.language;
+  const options = {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: 'true',
+  };
+  siteDate.textContent = `${date.toLocaleTimeString(locale, options)}`;
+  return siteDate;
+}
+setInterval(time, 1000);

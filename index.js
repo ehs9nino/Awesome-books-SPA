@@ -76,22 +76,19 @@ class Bookshelf {
 const newbook = new Bookshelf(books);
 
 form.onsubmit = () => {
- 
   newbook.addBook(title, author);
-  
+
   newbook.updateBookList();
-  
+
   form.reset();
 };
-
 
 newbook.updateBookList();
 
 const remove = (id) => {
   newbook.remove(id);
 };
-
-
+remove();
 const allBooks = document.querySelector('.all-books');
 const addBook = document.querySelector('.add-book');
 const contact = document.querySelector('.contact');
@@ -127,7 +124,6 @@ navContact.onclick = () => {
 };
 
 const siteDate = document.querySelector('#date');
-
 
 function time() {
   const date = new Date();

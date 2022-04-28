@@ -68,8 +68,8 @@ a {
   margin: 5px auto;
 }
 
-.date {
-  text-align: center;
+*.date {
+  text-align: right;
   margin: 10px auto;
   padding: 20px;
 }

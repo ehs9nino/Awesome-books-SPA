@@ -3,6 +3,7 @@
 # Project Name
 
 > Awesome books - Javascript Single Page Application
+    In this project, we have created a fully functional website for Awesome books where we have added three sections: Books list, Add book form, a new Contact info section with a Navigation bar, and a Footer."
 
 
 ## Built With

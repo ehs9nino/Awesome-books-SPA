@@ -1,62 +1,68 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Awesome books
 
-> Description the project.
+> "Awesome books" is a simple website that displays a list of books and allows you to add and remove books from that list.
+
+
+# Project requirements
+
+- Create class methods to add and remove books.
+- Display all books saved in the collection in the top part of the page.
+- Make sure that when a user clicks the "Add" button:
+     - A new book is added to the collection.
+     - The new book is displayed in the page. 
+- Make sure that when a user clicks the "Remove" button:
+     - The correct book is removed from the collection.
+     - The correct book dissapears from the page.
+- Make sure that data is preserved in the browser's memory by using localStorage.
+- Modify the Awesome books application to have:
+     - A Navigation bar.
+     - Three content sections:
+     - Books list.
+     - Add book form.
+     - Contact info.
+
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML
+- CSS
+- Git & Gitflow
+- Javascript
 
-## Live Demo (if available)
+## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo]()
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+**You can fork the project and you are good to go.**
 
 ### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+Having a web browser, code editor and git.
 
 ## Authors
 
-👤 **Author1**
+👤 **Ehsan Qader**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@ehs9nino](https://github.com/ehs9nino) 
+- Twitter: [@ehs9nino](https://twitter.com/ehsan9nino) 
+- LinkedIn: [Ehsan Qader](https://www.linkedin.com/in/ehsan-qader-a230a6165/) 
 
-👤 **Author2**
+👤 **Pedro**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Pedro](https://github.com/Lusindiso)
+- Twitter: [@Pedro](https://twitter.com/LusindisoNt)
+- LinkedIn: [Pedro](https://www.linkedin.com/in/lusindisontanjana/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page]().
 
 ## Show your support
 

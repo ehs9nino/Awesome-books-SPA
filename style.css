@@ -173,3 +173,16 @@ h2 {
   padding: 15px;
   justify-self: flex-end;
 }
+
+.check1 {
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 30px;
+}
+
+.check2 {
+  text-align: center;
+    font-size: xx-large;
+    margin-bottom: 30px;
+
+}

@@ -9,20 +9,72 @@ function isStorageAvailable(type) {
     return true;
   } catch (e) {
     return e instanceof DOMException && (
-      // 1) everything except Firefox
-      // 2) Firefox
-      // test name field too, because code might not be present
-      // 3) everything except Firefox
-      // 4) Firefox
-      // 5) acknowledge QuotaExceededError only if there's something already stored
       e.code === 22 || e.code === 1014 || e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') && (storage && storage.length !== 0);
+  }
+}
+
+// Base class for all types of books
+class Book {
+  constructor(title, author) {
+    this.id = Math.floor(Math.random() * 1000000);
+    this.title = title;
+    this.author = author;
+  }
+
+  displayInfo() {
+    return `"${this.title}" by ${this.author}`;
+  }
+}
+
+// Subclass for publications
+class Publication extends Book {
+  constructor(title, author, publisher) {
+    super(title, author);
+    this.publisher = publisher;
+  }
+
+  displayInfo() {
+    return `${super.displayInfo()} (Published by ${this.publisher})`;
+  }
+}
+
+// Create a Library class to encapsulate library-related functionality
+class Library {
+  constructor() {
+    this.books = [];
+  }
+
+  addBook(book) {
+    this.books.push(book);
+    localStorage.setItem('bookList', JSON.stringify(this.books));
+  }
+
+  removeBook(id) {
+    this.books = this.books.filter((book) => book.id !== parseInt(id, 10));
+    localStorage.setItem('bookList', JSON.stringify(this.books));
+    this.updateBookList();
+  }
+
+  getAllBooks() {
+    return this.books;
+  }
+
+  updateBookList() {
+    const bookList = document.querySelector('.added-bklist');
+    bookList.innerHTML = '';
+
+    this.books.forEach((el) => {
+      bookList.innerHTML += `<div>
+      <p>${el.displayInfo()}</p>
+      <button id="${el.title}" onclick="remove('${el.id}')" class="remove">Remove</button>
+      </div>`;
+    });
   }
 }
 
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const form = document.querySelector('#added-book');
-const bookList = document.querySelector('.added-bklist');
 
 let books = [];
 
@@ -35,60 +87,25 @@ if (isStorageAvailable('localStorage')) {
   }
 }
 
-// Create classes
-class Bookshelf {
-  constructor(books) {
-    this.books = books;
-  }
+const newbook = new Library();
 
-  addBook(title, author) {
-    const book = {
-      id: Math.floor(Math.random() * 1000000),
-      title: title.value,
-      author: author.value,
-    };
+form.onsubmit = (event) => {
+  event.preventDefault(); // Prevent default form submission behavior
 
-    this.books.push(book);
-
-    if (isStorageAvailable('localStorage')) {
-      localStorage.setItem('bookList', JSON.stringify(this.books));
-    }
-  }
-
-  remove(id) {
-    this.books = this.books.filter((book) => book.id !== parseInt(id, 10));
-    localStorage.setItem('bookList', JSON.stringify(this.books));
-    this.updateBookList();
-  }
-
-  updateBookList() {
-    bookList.innerHTML = '';
-
-    this.books.forEach((el) => {
-      bookList.innerHTML += `<div>
-      <p>"<span class="title">${el.title}</span>" by <span class="author">${el.author}</span></p>
-      <button id="${el.title}" onclick="remove('${el.id}')" class="remove">Remove</button>
-      </div>`;
-    });
-  }
-}
-
-const newbook = new Bookshelf(books);
-
-form.onsubmit = () => {
-  newbook.addBook(title, author);
+  // Creating a Publication for demonstration
+  const newBook = new Publication(title.value, author.value, "Random Publisher");
+  newbook.addBook(newBook);
 
   newbook.updateBookList();
-
   form.reset();
 };
 
 newbook.updateBookList();
 
 const remove = (id) => {
-  newbook.remove(id);
+  newbook.removeBook(id);
 };
-remove();
+
 const allBooks = document.querySelector('.all-books');
 const addBook = document.querySelector('.add-book');
 const contact = document.querySelector('.contact');
